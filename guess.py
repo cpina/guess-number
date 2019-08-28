@@ -25,7 +25,8 @@ grid[3] = {9, 10, 11, 12, 13, 8,
 grid[4] = {3, 6, 7, 10, 11, 2,
            14, 15, 18, 19, 22, 23,
            26, 27, 30, 31, 34, 35,
-           38, 39, 42, 43, 46, 47}
+           38, 39, 42, 43, 46, 47,
+           50, 51, 54, 55, 58, 59}
 
 grid[5] = {17, 18, 19, 20, 21, 16,
            22, 23, 24, 25, 26, 27,
@@ -41,7 +42,7 @@ grid[6] = {33, 34, 35, 36, 37, 32,
 
 
 def guess_number_pointing_at_grids(board_numbers: List[int]):
-    possible_numbers = grid[1]
+    possible_numbers = set(grid[1])
 
     for grid_number in range(2, 7):
         if grid_number in board_numbers:
@@ -66,8 +67,16 @@ def find_grids_for_number(number):
     return grids
 
 
-result = guess_number_pointing_at_grids([1, 2, 4, 5])
-print(result)
+def main():
+    print(find_grids_for_number(21))
 
-for number in range(1, 61):
-    print("number:", number, "in:", find_grids_for_number(number))
+    result = guess_number_pointing_at_grids([1, 4])
+    print(result)
+
+    for number in range(1, 61):
+        print("number:", number, "in:", find_grids_for_number(number))
+
+    print("Finished!")
+
+if __name__ == "__main__":
+    main()
