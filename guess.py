@@ -72,13 +72,9 @@ def guess_number_pointing_at_grids(grid_numbers: List[int]) -> List[int]:
     :param grid_numbers: where the user said that the number is 
     :return: the number!
     """
-    possible_numbers = None
+    possible_numbers = set(range(1, find_maximum_number()))
 
     for grid_number, grid in GRIDS.items():
-        if possible_numbers is None:
-            possible_numbers = set(grid)
-            continue
-
         if grid_number in grid_numbers:
             possible_numbers = possible_numbers.intersection(grid)
         else:
